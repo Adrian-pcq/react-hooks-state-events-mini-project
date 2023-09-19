@@ -12,12 +12,15 @@ function App() {
   const [task,setTask]=useState(TASKS)
   const [select,setSelect]=useState("")
 
-  
+  function addTask(form){
+    setTask([...task,form])
+  }
+
   return (
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES}  Tasks={TASKS} setTask={setTask} select={select} setSelect={setSelect}/>
-      <NewTaskForm />
+      <NewTaskForm categories={CATEGORIES} onTaskFormSubmit={addTask}/>
       <TaskList tasks={task} setTask={setTask} />
     </div>
   );
